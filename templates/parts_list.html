@@ -1,0 +1,5 @@
+{% for item in object_list %}
+<ul>
+    <li><a href="{% url 'detail' item.pk %}">{{ item.parts_name }}</a></li>
+</ul>
+{% endfor %}
