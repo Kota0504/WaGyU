@@ -1,11 +1,16 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView
 from .models import PartsModel
+
 
 class PartsList(ListView):
     template_name = 'parts_list.html'
     model = PartsModel
 
-class PartsDetail(DetailView):
-    template_name = 'parts_detail.html'
-    model = PartsModel
+
+def parts_detail(request, pk):
+    obj = PartsModel.objects.get(pk=pk)
+    template = obj.template
+    print(template)
+    return render(request, template)
+
