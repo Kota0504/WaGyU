@@ -1,5 +1,33 @@
-{% for item in object_list %}
-<ul>
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+  <meta charset="UTF-8">
+  {% block extrahead %}
+  <link rel="stylesheet" href="{% static 'parts_list.css' %}">
+  {% endblock %}
+  <title>Home and select-parts page</title>
+</head>
+<body>
+<!-- header -->
+  <header>
+  	<h1 class="headline">
+      <a>肉の部位紹介</a>
+    </h1>
+    <ul class="nav-list">
+      <li class="nav-list-item">
+        <a>Home</a>
+      </li>
+      <li class="nav-list-item">ブログ</li>
+      <li class="nav-list-item">牛の種類</li>
+    </ul>
+  </header>
+
+<!-- main contents --> 
+  {% for item in object_list %}
+　<ul>
     <li><a href="{% url 'detail' item.pk %}">{{ item.parts_name }}</a></li>
-</ul>
-{% endfor %}
+  </ul>
+　{% endfor %}
+</body>
+</html>
